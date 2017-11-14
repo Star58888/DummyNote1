@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class DummyNote extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    EditText editText1 ,editText2 , editText3;
+    EditText ednote  ;
     ListView listView;
 
     @Override
@@ -83,7 +83,6 @@ public class DummyNote extends AppCompatActivity implements AdapterView.OnItemCl
         int count;
         long rowId ;
         String note;
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
@@ -99,19 +98,18 @@ public class DummyNote extends AppCompatActivity implements AdapterView.OnItemCl
                 setAdapter();
                 break;
             case 3:
-                editText1 = new EditText(this);
-                editText2 = new EditText(this);
-                editText3 = new EditText(this);
-
-                new AlertDialog.Builder(this).setTitle("修改項目名稱").setMessage("請輸入你要修改的資料").setView(editText1).setPositiveButton("確認", new DialogInterface.OnClickListener() {
+                ednote = new EditText(this);
+                new AlertDialog.Builder(this).setTitle("修改項目名稱").setMessage("請輸入你要修改的資料")
+                        .setView(ednote).setPositiveButton("確認", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        note = ednote.getText().toString();
+                        mDbHelper.update(rowId, note);
 
-                        note = editText1.getText().toString();
-                   mDbHelper.update(rowId,note);
                         fillData();
                     }
                 }).show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);

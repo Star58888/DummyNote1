@@ -120,7 +120,7 @@ public class DB {
         return delete(-1);
     }
 
-    public boolean update(long rowId , String note)
+    public boolean update(long rowId , String note )
     {
         ContentValues args = new ContentValues();
         args.put(KEY_NOTE , note);
