@@ -19,8 +19,7 @@ import android.widget.Toast;
 public class DummyNote extends AppCompatActivity implements AdapterView.OnItemClickListener {
     EditText editText1 ,editText2;
     ListView listView;
-    private DB mDbHelper;
-    private Cursor mNotesCursor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +58,8 @@ public class DummyNote extends AppCompatActivity implements AdapterView.OnItemCl
         fillData();
     }
 
+    private DB mDbHelper;
+    private Cursor mNotesCursor;
     private void fillData() {
         mNotesCursor = mDbHelper.getAll();
 //        if(mNotesCursor != null)

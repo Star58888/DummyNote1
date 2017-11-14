@@ -20,7 +20,6 @@ public class DB {
     private static final String DATABASE_NAME = "notes.db";
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_TABLE = "mytable";
-    private static final String NEW_DATABASE_TABLE = "notes2";
     private static final String DATABASE_CREATE =
 //            "CREATE TABLE notes(_id INTEGER PRIMARY KEY,noteTEXT,created INTEGER);";
 //            "CREATE TABLE IF NOT EXISTS mytable(_id INTEGER PRIMARY KEY, note TEXT NOT NULL, created INTEGER);";
