@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class DummyNote extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    EditText editText1 ,editText2;
+    EditText editText1 ,editText2 , editText3;
     ListView listView;
 
     @Override
@@ -82,7 +82,7 @@ public class DummyNote extends AppCompatActivity implements AdapterView.OnItemCl
 
         int count;
         long rowId ;
-
+        String note;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -100,11 +100,15 @@ public class DummyNote extends AppCompatActivity implements AdapterView.OnItemCl
                 break;
             case 3:
                 editText1 = new EditText(this);
+                editText2 = new EditText(this);
+                editText3 = new EditText(this);
+
                 new AlertDialog.Builder(this).setTitle("修改項目名稱").setMessage("請輸入你要修改的資料").setView(editText1).setPositiveButton("確認", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                   mDbHelper.update(rowId,editText1.getText().toString());
+                        note = editText1.getText().toString();
+                   mDbHelper.update(rowId,note);
                         fillData();
                     }
                 }).show();
@@ -116,11 +120,11 @@ public class DummyNote extends AppCompatActivity implements AdapterView.OnItemCl
     public void onItemClick(AdapterView<?> parent, View view, int position , long id) {
         rowId = id;
         Toast.makeText(this , "第" + (position + 1)+ "項" ,Toast.LENGTH_SHORT).show();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("AlertDialog : " + (position + 1));
-        builder.setMessage("這裡可以用來顯示Alert訊息，要按[回上頁]鍵或是「確認」鈕才會關閉");
-        builder.setPositiveButton("確認" , null);
-        builder.show();
+        AlertDialog.Builder rowId = new AlertDialog.Builder(this);
+        rowId.setTitle("AlertDialog : " + (position + 1));
+        rowId.setMessage("這裡可以用來顯示Alert訊息，要按[回上頁]鍵或是「確認」鈕才會關閉");
+        rowId.setPositiveButton("確認" , null);
+        rowId.show();
 
     }
 }
